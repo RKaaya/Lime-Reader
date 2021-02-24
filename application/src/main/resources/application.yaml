@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: LimeReader
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+  kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        limte-text-in:
+          destination: words.processed
+          contentType: application/json
+          consumer.concurrency: 3
+          group: lime-reader-group
+
+server:
+  port: 8081
