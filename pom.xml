@@ -18,9 +18,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>application</module>
         <module>reader-doc</module>
         <module>reader-server</module>
+        <module>application</module>
     </modules>
 
     <properties>

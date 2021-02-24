@@ -21,6 +21,7 @@ public class DefaultLimeReaderService implements LimeReaderService {
     @Override
     public List<Lime> getLastTenComputate() {
         List<LimeEntity> limeEntities = limeRepository.findTop10ByOrderByMessageCreatedDesc();
+        log.info("Found limes in db: {}", limeEntities.size());
         return limeEntities.stream().map(item -> limeEntityMapper.mapEntityToLime(item)).collect(Collectors.toList());
     }
 
